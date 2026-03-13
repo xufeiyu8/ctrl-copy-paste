@@ -23,14 +23,14 @@
 
 ## 文件说明
 
-- [alt-copy-paste.ahk](C:\Users\22696\alt-copy-paste.ahk)：核心脚本
-- [run-alt-copy-paste.bat](C:\Users\22696\run-alt-copy-paste.bat)：固定使用 `AutoHotkey v2` 启动脚本的批处理
+- [alt-copy-paste.ahk](C:\Users\用户名\alt-copy-paste.ahk)：核心脚本
+- [run-alt-copy-paste.bat](C:\Users\用户名\run-alt-copy-paste.bat)：固定使用 `AutoHotkey v2` 启动脚本的批处理
 
 ## 环境要求
 
 - Windows
 - `AutoHotkey v2`
-
+https://www.autohotkey.com/
 本项目当前使用的启动程序路径为：
 
 ```text
