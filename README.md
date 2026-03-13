@@ -108,6 +108,12 @@ WinActive("ahk_exe WeChat.exe") || WinActive("ahk_exe Weixin.exe")
 - 增加应用白名单 / 黑名单
 - 打包成独立 `exe`
 
+  下载：alt-copy-paste.ahk
+  https://github.com/xufeiyu8/alt-copy-paste/releases/download/alt-copy-paste/alt-copy-paste.ahk
+
+  run-alt-copy-paste.bat
+https://github.com/xufeiyu8/alt-copy-paste/releases/download/alt-copy-paste/run-alt-copy-paste.bat
+
 ## 许可证
 
 可按个人项目需要自行补充，例如 `MIT License`。
