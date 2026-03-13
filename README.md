@@ -19,25 +19,27 @@
 - `左Alt` 仅在微信客户端生效
   - 按住 `左Alt` 并选择文字，松开后自动复制
   - 快速连续按两次 `左Alt`，自动粘贴
+- 微信截图快捷键建议改为 `Shift+A`
 - 原生 `Ctrl+C` / `Ctrl+V` 不受影响
 
 ## 文件说明
 
-- [alt-copy-paste.ahk](C:\Users\用户名\alt-copy-paste.ahk)：核心脚本
-- [run-alt-copy-paste.bat](C:\Users\用户名\run-alt-copy-paste.bat)：固定使用 `AutoHotkey v2` 启动脚本的批处理
+- [alt-copy-paste.ahk](C:\Users\用户名\alt-copy-paste\alt-copy-paste.ahk)：核心脚本
+- [run-alt-copy-paste.bat](C:\Users\用户名\alt-copy-paste\run-alt-copy-paste.bat)：固定使用 `AutoHotkey v2` 启动脚本的批处理
 
 ## 环境要求
 
 - Windows
 - `AutoHotkey v2`
 https://www.autohotkey.com/
+
 本项目当前使用的启动程序路径为：
 
 ```text
 D:\AutoHotkey\v2\AutoHotkey64.exe
 ```
 
-如果你的安装路径不同，需要同步修改 [run-alt-copy-paste.bat](C:\Users\22696\run-alt-copy-paste.bat)。
+如果你的安装路径不同，需要同步修改 [run-alt-copy-paste.bat](C:\Users\用户名\alt-copy-paste\run-alt-copy-paste.bat)。
 
 ## 启动方式
 
@@ -75,6 +77,16 @@ run-alt-copy-paste.bat
 6. 到目标输入位置，快速连续按两次 `左Alt`
 7. 脚本会自动发送 `Ctrl+V`
 
+### 微信截图建议
+
+为避免 `Alt` 相关冲突，推荐把微信截图快捷键设置为：
+
+```text
+Shift+A
+```
+
+这样可以把“微信截图”和“左Alt 复制/粘贴”完全解耦，稳定性更高。
+
 ## 当前兼容情况
 
 已测试可正常使用：
@@ -87,11 +99,13 @@ run-alt-copy-paste.bat
 
 - `右Ctrl`：全局可用
 - `左Alt`：仅微信客户端可用
+- `Shift+A`：作为推荐的微信截图快捷键
 
 ## 已知限制
 
 - 本质上仍是“模拟发送 `Ctrl+C` / `Ctrl+V`”，个别特殊程序可能不兼容。
 - 如果目标程序以管理员权限运行，脚本最好也以管理员权限运行。
+- 不建议继续使用包含 `Alt` 的微信截图快捷键，否则可能与微信截图界面里的 `Alt` 行为冲突。
 - 微信专属判断当前使用：
 
 ```ahk
@@ -113,6 +127,7 @@ WinActive("ahk_exe WeChat.exe") || WinActive("ahk_exe Weixin.exe")
 
   run-alt-copy-paste.bat
 https://github.com/xufeiyu8/alt-copy-paste/releases/download/alt-copy-paste/run-alt-copy-paste.bat
+
 
 ## 许可证
 
