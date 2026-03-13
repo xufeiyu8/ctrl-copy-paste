@@ -8,16 +8,6 @@ global g_lastTriggerTap := 0
 global g_triggerDownX := 0
 global g_triggerDownY := 0
 
-~RControl::
-{
-    TriggerDown()
-}
-
-~RControl Up::
-{
-    TriggerUp()
-}
-
 #HotIf IsWeChatWindow()
 ~LAlt::
 {
@@ -26,7 +16,7 @@ global g_triggerDownY := 0
 
 ~LAlt Up::
 {
-    TriggerUp()
+    TriggerUpWithoutLAlt()
 }
 #HotIf
 
@@ -37,7 +27,7 @@ TriggerDown()
     MouseGetPos &g_triggerDownX, &g_triggerDownY
 }
 
-TriggerUp()
+TriggerUpWithoutLAlt()
 {
     global g_triggerDownTime, g_lastTriggerTap, g_triggerDownX, g_triggerDownY
 
@@ -47,26 +37,42 @@ TriggerUp()
     MouseGetPos &mouseX, &mouseY
     moved := Abs(mouseX - g_triggerDownX) > 8 || Abs(mouseY - g_triggerDownY) > 8
 
-    ; 按住触发键一小段时间，或期间发生明显鼠标移动，视为完成选择并执行复制。
+    ; 按住左 Alt 一小段时间，或期间发生明显鼠标移动，视为完成选择并执行复制。
     if (holdTime > 120 || moved) {
-        ; 如果还在拖拽选择，等左键松开后再复制，避免选区尚未稳定。
         KeyWait "LButton"
-        A_Clipboard := ""
-        Sleep 120
-        Send "^c"
+        Sleep 100
+        SendCtrlComboWithoutLAlt("c")
         ClipWait 0.5
         return
     }
 
-    ; 快速连续按两次触发键，执行粘贴。
+    ; 快速连续按两次左 Alt，执行粘贴。
     if (A_TickCount - g_lastTriggerTap < 350) {
         Sleep 30
-        Send "^v"
+        SendCtrlComboWithoutLAlt("v")
         g_lastTriggerTap := 0
         return
     }
 
     g_lastTriggerTap := A_TickCount
+}
+
+SendCtrlComboWithoutLAlt(key)
+{
+    altWasDown := GetKeyState("LAlt", "P")
+
+    if altWasDown {
+        SendEvent "{LAlt up}"
+        Sleep 30
+    }
+
+    SendEvent "^" key
+    Sleep 30
+
+    if altWasDown {
+        SendEvent "{LAlt down}"
+        Sleep 20
+    }
 }
 
 IsWeChatWindow()
