@@ -17,7 +17,7 @@
 ## 文件说明
 
 - [ctrl-copy-paste.ahk](C:\Users\22696\ctrl-copy-paste\ctrl-copy-paste.ahk)：核心脚本
-- [run-alt-copy-paste.bat](C:\Users\22696\ctrl-copy-paste\run-ctrl-copy-paste.bat)：固定使用 `AutoHotkey v2` 启动脚本的批处理
+- [run-ctrl-copy-paste.bat](C:\Users\22696\ctrl-copy-paste\run-ctrl-copy-paste.bat)：固定使用 `AutoHotkey v2` 启动脚本的批处理
 
 ## 环境要求
 
